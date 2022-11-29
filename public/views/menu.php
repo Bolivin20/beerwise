@@ -29,15 +29,18 @@
             </header>
 
             <options>
-                    <o1>
+                <form method="post" action="addingPage">
+                    <button type="submit">
                         <i class="fa-solid fa-plus"></i>
                         <b>Add beer</b>
-                    </o1>
-
-                    <o2>
+                    </button>
+                </form>
+                <form method="post" action="ratingsPage">
+                    <button type="submit">
                         <i class="fa-solid fa-star"></i>
                         <b>Ratings</b>
-                    </o2>
+                    </button>
+                </form>
                                         
             </options>
     </div>

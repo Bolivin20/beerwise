@@ -126,7 +126,7 @@ options {
     align-items: center;
 }
 
-o1 {
+button{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -134,36 +134,18 @@ o1 {
     background: rgba(88, 202, 60, 0.42);
     border: 0px;
     border-radius: 45px;
-    padding: 2em;
-    margin: 4em;
+    padding: 1em;
 
-}
 
-o2 {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background: rgba(88, 202, 60, 0.42);
-    border: 0px;
-    border-radius: 45px;
-    padding: 2em;
-    margin: 4em;
-}
-
-o1 i {
-    font-family: 'Oswald', sans-serif;
-    font-size: 45px;  
-    color: #65370E;
-}
-
-o2 i {
     font-family: 'Oswald', sans-serif;
     font-size: 45px;
     color: #65370E;
     font-weight: 10;
 }
 
+form{
+    margin: 4em;
+}
 @media only screen and (max-device-width: 420px) {
  b1 {
     font-size: 35px;

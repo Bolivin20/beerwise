@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/adding.css">
+    <link rel="stylesheet" type="text/css" href="public/css/adding.css">
     <title>Adding</title>
     <script src="https://kit.fontawesome.com/5d4765dc9e.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
