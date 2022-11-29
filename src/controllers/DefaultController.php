@@ -9,4 +9,9 @@ class DefaultController extends AppController {
         $this->render('login');
     }
 
+    public function menu()
+    {
+        $this->render('menu');
+    }
+
 }
