@@ -8,7 +8,7 @@ $path = parse_url( $path, PHP_URL_PATH);
 Router::get('', 'DefaultController');
 Router::get('menu', 'DefaultController');
 Router::post('login', 'SecurityController');
-Router::post('addingPage','AddingPageController');
+//Router::post('addingPage','AddingPageController');
 Router::post('ratingsPage','RatingsPageController');
 Router::post('addBeer','AddingBeerController');
 

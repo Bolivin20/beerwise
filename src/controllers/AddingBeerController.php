@@ -2,6 +2,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__ .'/../models/Beer.php';
+require_once __DIR__.'/../repositories/BeerRepo.php';
 
 class AddingBeerController extends AppController {
 
@@ -10,6 +11,13 @@ class AddingBeerController extends AppController {
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private $message = [];
+    private $beerRepo;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->beerRepo = new BeerRepo();
+    }
 
     public function addBeer()
     {
@@ -19,9 +27,8 @@ class AddingBeerController extends AppController {
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            // TODO create new project object and save it in database
-            //$beer = new Beer($_POST['name'],$_POST['brewery'],$_POST['style'],$_POST['abv'], $_POST['description'], $_FILES['file']['name1']);
-            if(new Beer($_POST['title'],$_POST['brewery'],$_POST['style'],$_POST['abv'], $_POST['description'], $_FILES['file']['name']))
+            $beer = new Beer($_POST['title'],$_POST['brewery'],$_POST['style'],$_POST['abv'], $_POST['description'], $_FILES['file']['name']);
+            $this->beerRepo->addBeer($beer);
 
             return $this->render('menu', ['messages' => $this->message]);
         }

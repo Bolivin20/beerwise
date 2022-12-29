@@ -29,7 +29,7 @@
             </header>
 
             <options>
-                <form method="post" action="addingPage">
+                <form method="post" action="addBeer">
                     <button type="submit">
                         <i class="fa-solid fa-plus"></i>
                         <b>Add beer</b>

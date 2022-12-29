@@ -1,16 +1,16 @@
 <?php
 
 class Beer {
-    private $name;
+    private $title;
     private $brewery;
     private $style;
     private $abv;
     private $description;
     private $image;
 
-    public function __construct($name, $brewery, $style, $abv, $description, $image)
+    public function __construct($title, $brewery, $style, $abv, $description, $image)
     {
-        $this->name = $name;
+        $this->title = $title;
         $this->brewery = $brewery;
         $this->style = $style;
         $this->abv = $abv;
@@ -18,14 +18,14 @@ class Beer {
         $this->image = $image;
     }
 
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
     }
 
     public function getBrewery()
