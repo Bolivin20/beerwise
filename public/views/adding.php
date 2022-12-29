@@ -10,38 +10,28 @@
 <div class="base">
     <div class="left">
         <sen>Adding new beer.</sen>
-        <b>
-            <pic class="fa-regular fa-image"></pic>
-            <tex>
-            <i class="fa-solid fa-plus"></i>
-            <t>Add picture</t>
-            </tex>
-        </b>
-        </div>
-     <div class="right">
-        
-            <input name="name" type="text" placeholder="Beer name...">
-            <input name="brewery" type="text" placeholder="Brewery...">
-            <input name="style" type="text" placeholder="Style...">
-            <input name="abv" type="text" placeholder="ABV...">
-            <input name="description" type="text" placeholder="Description...">
-            
-         
-    </div>
+        <form action="addBeer" method="post" enctype="multipart/form-data">
 
+    <input name="title" type="text" placeholder="Name">
+    <input name="brewery" type="text" placeholder="Brewery">
+    <input name="style" type="text" placeholder="Style">
+    <input name="abv" type="text" placeholder="Alcohol">
+    <textarea name="description" rows="5" placeholder="Description..."></textarea>
+
+    <input type="file" name="file">
+
+            <div class="messages">
+                <?php
+                if(isset($messages)){
+                    foreach($messages as $message) {
+                        echo $message;
+                    }
+                }
+                ?>
+            </div>
+    <button type="submit">Add</button>
+    </form>
 
 </div>
-
-
-<div class="panel">
-    <button>
-        <i class="fa-solid fa-arrow-left"></i>
-        <bck>Back</bck>
-    </button>
-
-    <button>
-            <i class="fa-solid fa-plus"></i>
-            <bck>Add</bck>
-        </button>
 </div>
 </body>

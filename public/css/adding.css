@@ -50,6 +50,26 @@ input{
 
     font-size: 35px;
 }
+.messages{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    color: red;
+    margin: 2em;
+}
+
+textarea{
+    background: rgba(88, 202, 60, 0.42);
+    border: 0px;
+    border-radius: 45px;
+    padding: 1em;
+    margin: 1em;
+    width: 100%;
+
+
+    font-size: 35px;
+}
+
 button{
     background: rgba(88, 202, 60, 0.42);
     border: 0px;

@@ -10,4 +10,6 @@ Router::get('menu', 'DefaultController');
 Router::post('login', 'SecurityController');
 Router::post('addingPage','AddingPageController');
 Router::post('ratingsPage','RatingsPageController');
+Router::post('addBeer','AddingBeerController');
+
 Router::run($path);

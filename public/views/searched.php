@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/searched.css">
+    <link rel="stylesheet" type="text/css" href="public/css/searched.css">
     <title>Searched item</title>
     <script src="https://kit.fontawesome.com/5d4765dc9e.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,7 +10,7 @@
     <div class="base-container">
             
     <div class="leftside">
-        <img src="../img/atak_chmielu.svg">
+        <img src="public/uploads/<?=$beer->getImage() ?>">
         <rating>
          <i class="fa-solid fa-star"></i>
          <t>Rating:</t>
@@ -24,31 +24,28 @@
     <div class="rightside">
         <name>
             <t>name:</t>
-            <b>Atak chmielu</b>
+            <b><?= $beer->getName()?></b>
         </name>
 
         <brewery>
             <t>brewery:</t>
-            <b>PINTA</b>
+            <b><?= $beer->getBrewery()?>></b>
         </brewery>
 
         <type>
             <t> style: </t>
-            <b>American Ipa</b>
+            <b><?=$beer->getStyle()?></b>
         </type>
 
         <alcohol>
             <t>alcohol:</t>
-            <b>6,1%</b>
+            <b><?=$beer->getAbv()?></b>
         </alcohol>
 
         <description>
             <t>description:</t>
             <div class="des">
-                <b2>BLG 15,1°,   ABV 6,1%<br>
-                    Pierwsza AIPA z polskiego browaru. Atak Chmielu warzymy od 28 marca 2011 r.
-                    Nasza AIPA to czerwono-miedziane, treściwe piwo górnej fermentacji. Smak i 
-                    aromat cytrusowy, kwiatowy, żywiczny, sosnowy i owocowy pochodzi od amerykańskiego chmielu.</b2>
+                <b2><?=$beer->getDescription()?></b2>
                 </div>
         </description>
 
