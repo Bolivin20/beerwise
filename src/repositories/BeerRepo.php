@@ -27,7 +27,7 @@ class BeerRepo extends Repository
             $beer['style'],
             $beer['abv'],
             $beer['description'],
-            $beer['image']
+            $beer['img']
         );
     }
 
@@ -54,4 +54,27 @@ class BeerRepo extends Repository
         ]);
     }
 
+    public function getBeers(): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT beers.title, beers.img FROM public.beers;
+        ');
+        $stmt->execute();
+        $beers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($beers as $beer) {
+            $result[] = new Beer(
+                $beer['title'],
+                $beer['brewery'],
+                $beer['style'],
+                $beer['abv'],
+                $beer['description'],
+                $beer['img']
+            );
+        }
+
+        return $result;
+    }
 }

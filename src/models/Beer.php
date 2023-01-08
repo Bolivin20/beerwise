@@ -6,16 +6,16 @@ class Beer {
     private $style;
     private $abv;
     private $description;
-    private $image;
+    private $img;
 
-    public function __construct($title, $brewery, $style, $abv, $description, $image)
+    public function __construct($title, $brewery, $style, $abv, $description, $img)
     {
         $this->title = $title;
         $this->brewery = $brewery;
         $this->style = $style;
         $this->abv = $abv;
         $this->description = $description;
-        $this->image = $image;
+        $this->img = $img;
     }
 
     public function getTitle()
@@ -70,11 +70,11 @@ class Beer {
 
     public function getImage()
     {
-        return $this->image;
+        return $this->img;
     }
 
-    public function setImage($image)
+    public function setImage($img)
     {
-        $this->image = $image;
+        $this->img = $img;
     }
 }

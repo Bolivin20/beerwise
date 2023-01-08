@@ -53,23 +53,67 @@ b {
 
 header {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+a{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+e{
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 2em;
 }
 
+img {
+    height: 3em;
+    margin: 1em;
+}
+
 f {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     background: rgba(88, 202, 60, 0.42);
     border: 0px;
     border-radius: 45px;
-    padding: 2em;
 }
 
+table {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 15em;
+    width: 20em;
+}
+
+section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+table1 {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 15em;
+    width: 20em;
+}
+
+pusty{
+    padding: 10em;
+}
 b1 {
     display: flex;
     flex-direction: row;
