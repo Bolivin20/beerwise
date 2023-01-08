@@ -59,7 +59,7 @@ class BeerRepo extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT beers.title, beers.img FROM public.beers;
+            SELECT * FROM public.beers ORDER BY id DESC;
         ');
         $stmt->execute();
         $beers = $stmt->fetchAll(PDO::FETCH_ASSOC);

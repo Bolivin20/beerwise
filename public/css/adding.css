@@ -50,6 +50,14 @@ input{
 
     font-size: 35px;
 }
+
+.no-valid {
+    border: 2px solid red;
+    border-radius: 1em;
+    box-shadow: 0 0 0.2em red;
+    outline: none;
+}
+
 .messages{
     font-family: 'Oswald', sans-serif;
     font-weight: 700;

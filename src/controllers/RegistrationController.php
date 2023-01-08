@@ -19,6 +19,10 @@ class RegistrationController extends AppController
         $password = $_POST['password'];
         $password2 = $_POST['password2'];
 
+        if($name == "" || $surname == "" || $email == "" || $password == "" || $password2 == ""){
+            return $this->render('registration', ['messages' => ['All fields are required!']]);
+        }
+
         if ($password !== $password2) {
             return $this->render('registration', ['messages' => ['Passwords are not the same!']]);
         }
@@ -29,11 +33,14 @@ class RegistrationController extends AppController
             return $this->render('registration', ['messages' => ['User with this email already exist!']]);
         }
 
-        $user = new User($email, $password, $name, $surname);
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+        $user = new User($email, $hashed_password, $name, $surname);
         $userRepo->addUser($user);
 
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/menu");
+        //$url = "http://$_SERVER[HTTP_HOST]";
+        //header("Location: {$url}/menu");
+
+        return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
 
     }
 }
