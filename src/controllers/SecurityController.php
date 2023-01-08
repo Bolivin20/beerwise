@@ -31,11 +31,21 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
-        //if ($user->getPassword() !== $password) {
-        //    return $this->render('login', ['messages' => ['Wrong password!']]);
-        //}
+
+        if(!isset($_COOKIE['id'])){
+            setcookie('id', $userRepo->getId($email) , time() + 3600, '/');
+        }
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/menu");
+    }
+
+    public function logout()
+    {
+        if(isset($_COOKIE['id'])){
+            setcookie('id', '', time() - 3600, '/');
+        }
+
+        return $this->render('login');
     }
 }

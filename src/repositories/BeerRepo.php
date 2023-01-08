@@ -39,8 +39,11 @@ class BeerRepo extends Repository
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ');
 
-        //TODO you should get this value from logged user session
-        $id_user = 1;
+        if(isset($_COOKIE['id'])) {
+            $id_user = $_COOKIE['id'];
+        }
+
+        //$id_user = 1;
 
         $stmt->execute([
             $beer->getTitle(),

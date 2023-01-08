@@ -43,4 +43,20 @@ class UserRepo extends Repository
         );
     }
 
+    public function getId(string $email): ?int
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT id FROM public.users WHERE email = :email
+        ');
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $id = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$id) {
+            return null;
+        }
+
+        return $id['id'];
+    }
 }

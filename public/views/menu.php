@@ -10,7 +10,9 @@
 <div class="base-container">
     <panel>
         <i class="fa-regular fa-user"></i>
-        <b>Logout</b>
+        <form action="logout" method="get">
+            <button type="submit">Logout</button>
+        </form>
 
     </panel>
 

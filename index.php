@@ -13,5 +13,6 @@ Router::get('registration','DefaultController');
 Router::post('ratingsPage','RatingsPageController');
 //Router::post('addBeer','AddingBeerController');
 Router::post('addBeer','MenuController');
+Router::get('logout','SecurityController');
 
 Router::run($path);
