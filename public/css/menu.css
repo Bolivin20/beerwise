@@ -10,8 +10,7 @@ body {
 }
 
 img {
-    height: 30em;
-    margin: 5em;
+    height: 3em;
 }
 
 .base-container:first-child {
@@ -47,6 +46,7 @@ b {
     font-weight: 700;
     font-size: 45px;
     line-height: 44px;
+    padding: 1em;
     
     color: #65370E;
 }
@@ -73,11 +73,6 @@ e{
     padding: 2em;
 }
 
-img {
-    height: 3em;
-    margin: 1em;
-}
-
 f {
     display: flex;
     flex-direction: row;
@@ -95,10 +90,43 @@ table {
     height: 15em;
     width: 20em;
 }
-
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.component{
+    display: table;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1em;
+}
+.beers {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: baseline;
+    overflow: auto;
+    height: 30em;
+}
+.breweries {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: baseline;
+    overflow: auto;
+    height: 30em;
+}
 section{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.search {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -112,7 +140,7 @@ table1 {
 }
 
 pusty{
-    padding: 10em;
+    padding: 5em;
 }
 b1 {
     display: flex;

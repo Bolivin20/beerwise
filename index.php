@@ -11,8 +11,8 @@ Router::post('login', 'SecurityController');
 Router::post('register','RegistrationController');
 Router::get('registration','DefaultController');
 Router::post('ratingsPage','RatingsPageController');
-//Router::post('addBeer','AddingBeerController');
 Router::post('addBeer','MenuController');
 Router::get('logout','SecurityController');
+Router::post('search','MenuController');
 
 Router::run($path);

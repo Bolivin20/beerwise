@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/menu.css">
     <title>BeerWise</title>
     <script src="https://kit.fontawesome.com/5d4765dc9e.js" crossorigin="anonymous"></script>
+    <script type=" text/javascript" src="public/js/searchBeer.js" defer></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 </head>
@@ -31,30 +32,24 @@
 
     </header>
 
-    <section class = "menu">
-        <table>
-            <?php
-            foreach($beers as $beer) {
-                echo '<tr>';
-                echo '<td><img src="public/uploads/'.$beer->getImage().'"></td>';
-                echo '<td>'.$beer->getTitle().'</td>';
-                echo '</tr>';
-            }
-            ?>
-        </table>
-        <pusty></pusty>
-        <table>
-            <?php
-            foreach($beers as $beer) {
-                echo '<tr>';
-                echo '<td><img src="public/uploads/'.$beer->getImage().'"></td>';
-                echo '<td>'.$beer->getTitle().'</td>';
-                echo '</tr>';
-            }
-            ?>
-        </table>
+<div class="content">
+    <section class = "beers">
+        <?php foreach ($beers as $beer): ?>
+            <div class="component">
+                <img src="public/uploads/<?= $beer->getImage(); ?>">
+                <b><?= $beer->getTitle(); ?></b>
+            </div>
+        <?php endforeach; ?>
+        </section>
+    <section class = "breweries">
+        <?php foreach ($beers as $beer): ?>
+        <div class="component">
+                <img src="public/uploads/<?= $beer->getImage(); ?>">
+                <b><?= $beer->getTitle(); ?></b>
+        </div>
+        <?php endforeach; ?>
     </section>
-
+</div>
 
     <options>
         <form method="post" action="addBeer">
@@ -73,3 +68,10 @@
     </options>
 </div>
 </body>
+
+<template id="beerSearch-template">
+        <div class="component">
+            <img src="">
+            <b></b>
+        </div>
+</template>
