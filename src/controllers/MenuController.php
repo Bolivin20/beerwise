@@ -58,6 +58,11 @@ class MenuController extends AppController {
         }
     }
 
+    public function selected() {
+        $title = $_POST['title'];
+       return $this->render('selected', ['beer' => $this->beerRepo->getToDisplayByTitle($title)]);
+    }
+
     private function validate(array $file): bool
     {
         if ($file['size'] > self::MAX_FILE_SIZE) {

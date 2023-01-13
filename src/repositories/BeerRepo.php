@@ -22,6 +22,7 @@ class BeerRepo extends Repository
         }
 
         return new Beer(
+
             $beer['title'],
             $beer['brewery'],
             $beer['style'],
@@ -92,5 +93,25 @@ class BeerRepo extends Repository
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getToDisplayByTitle(string $title): Beer
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM beers WHERE title = :title
+        ');
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $beer = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return new Beer(
+            $beer[0]['title'],
+            $beer[0]['brewery'],
+            $beer[0]['style'],
+            $beer[0]['abv'],
+            $beer[0]['description'],
+            $beer[0]['img']
+        );
     }
 }

@@ -36,8 +36,13 @@
     <section class = "beers">
         <?php foreach ($beers as $beer): ?>
             <div class="component">
+                <form action="selected" method="post">
                 <img src="public/uploads/<?= $beer->getImage(); ?>">
-                <b><?= $beer->getTitle(); ?></b>
+                    <button type="submit" id="selected">
+                        <input type="hidden" name="title" value="<?= $beer->getTitle(); ?>">
+                        <b><?= $beer->getTitle(); ?></b>
+                    </button>
+                </form>
             </div>
         <?php endforeach; ?>
         </section>

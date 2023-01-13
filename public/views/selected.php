@@ -10,7 +10,8 @@
     <div class="base-container">
             
     <div class="leftside">
-        <img src="public/uploads/<?=$beer->getImage() ?>">
+        <?php ?>
+        <img src="public/uploads/<?= $beer->getImage(); ?>">
         <rating>
          <i class="fa-solid fa-star"></i>
          <t>Rating:</t>
@@ -22,30 +23,30 @@
         </b>
     </div>
     <div class="rightside">
-        <name>
+        <name >
             <t>name:</t>
-            <b><?= $beer->getName()?></b>
+            <b><?= $beer->getTitle(); ?></b>
         </name>
 
         <brewery>
             <t>brewery:</t>
-            <b><?= $beer->getBrewery()?>></b>
+            <b><?= $beer->getBrewery(); ?></b>
         </brewery>
 
         <type>
             <t> style: </t>
-            <b><?=$beer->getStyle()?></b>
+            <b><?= $beer->getStyle(); ?></b>
         </type>
 
         <alcohol>
             <t>alcohol:</t>
-            <b><?=$beer->getAbv()?></b>
+            <b><?= $beer->getAbv(); ?></b>
         </alcohol>
 
         <description>
             <t>description:</t>
             <div class="des">
-                <b2><?=$beer->getDescription()?></b2>
+                <b2><?= $beer->getDescription(); ?></b2>
                 </div>
         </description>
 
