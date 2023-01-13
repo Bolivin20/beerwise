@@ -38,6 +38,8 @@ function createBeer(beer) {
     img.src = `/public/uploads/${beer.img}`;
     const title = clone.querySelector("b");
     title.innerHTML = beer.title;
+    const input = clone.querySelector("input");
+    input.value = beer.title;
 
     beerContainer.appendChild(clone);
 }

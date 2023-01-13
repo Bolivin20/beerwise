@@ -59,7 +59,8 @@ class MenuController extends AppController {
     }
 
     public function selected() {
-        $title = $_POST['title'];
+        //$title = $_POST['title'];
+        $title = $_GET['title'];
        return $this->render('selected', ['beer' => $this->beerRepo->getToDisplayByTitle($title)]);
     }
 

@@ -14,6 +14,6 @@ Router::post('ratingsPage','RatingsPageController');
 Router::post('addBeer','MenuController');
 Router::get('logout','SecurityController');
 Router::post('search','MenuController');
-Router::post('selected','MenuController');
+Router::get('selected','MenuController');
 
 Router::run($path);

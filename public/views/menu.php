@@ -36,7 +36,7 @@
     <section class = "beers">
         <?php foreach ($beers as $beer): ?>
             <div class="component">
-                <form action="selected" method="post">
+                <form action="selected" method="get">
                 <img src="public/uploads/<?= $beer->getImage(); ?>">
                     <button type="submit" id="selected">
                         <input type="hidden" name="title" value="<?= $beer->getTitle(); ?>">
@@ -76,7 +76,12 @@
 
 <template id="beerSearch-template">
         <div class="component">
+            <form action="selected" method="get">
             <img src="">
+                <button type="submit" id="selected">
             <b></b>
+                    <input type="hidden" name="title" value="">
+                </button>
+            </form>
         </div>
 </template>
