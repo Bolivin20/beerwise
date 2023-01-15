@@ -4,6 +4,7 @@
     <title>BeerWise</title>
     <script src="https://kit.fontawesome.com/5d4765dc9e.js" crossorigin="anonymous"></script>
     <script type=" text/javascript" src="public/js/searchBeer.js" defer></script>
+    <script type=" text/javascript" src="public/js/searchBrewery.js" defer></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 </head>
@@ -47,13 +48,18 @@
         <?php endforeach; ?>
         </section>
     <section class = "breweries">
-        <?php foreach ($beers as $beer): ?>
+        <?php foreach ($breweries as $brewery): ?>
         <div class="component">
-                <img src="public/uploads/<?= $beer->getImage(); ?>">
-                <b><?= $beer->getTitle(); ?></b>
+            <form action="selectedBrewery" method="get">
+                <button type="submit" id="selectedBrewery">
+                <b><?= $brewery->getName(); ?></b>
+                <input type="hidden" name="name" value="<?= $brewery->getName(); ?>">
+                </button>
+            </form>
         </div>
         <?php endforeach; ?>
     </section>
+
 </div>
 
     <options>
@@ -63,6 +69,13 @@
                 <b>Add beer</b>
             </button>
         </form>
+        <?php
+        if(isset($messages)){
+            foreach($messages as $message) {
+                echo $message;
+            }
+        }
+        ?>
         <form method="post" action="ratingsPage">
             <button type="submit">
                 <i class="fa-solid fa-star"></i>
@@ -81,6 +94,16 @@
                 <button type="submit" id="selected">
             <b></b>
                     <input type="hidden" name="title" value="">
+                </button>
+            </form>
+        </div>
+</template>
+<template id="brewerySearch-template">
+        <div class="component">
+            <form action="selectedBrewery" method="get">
+                <button type="submit" id="selectedBrewery">
+                <b></b>
+                <input type="hidden" name="name" value="">
                 </button>
             </form>
         </div>

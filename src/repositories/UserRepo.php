@@ -19,6 +19,19 @@ class UserRepo extends Repository
             $user->getPassword(),
             $date->format('Y-m-d')
         ]);
+        $this->setRole($this->getId($user->getEmail()));
+    }
+
+    public function setRole(int $id_user): void
+    {
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO roles (id_user, role)
+            VALUES (?, ?)
+        ');
+        $stmt->execute([
+            $id_user,
+            0
+        ]);
     }
 
     public function getUser(string $email): ?User

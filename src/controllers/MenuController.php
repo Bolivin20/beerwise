@@ -3,6 +3,8 @@
 require_once 'AppController.php';
 require_once __DIR__ .'/../models/Beer.php';
 require_once __DIR__.'/../repositories/BeerRepo.php';
+require_once __DIR__ .'/../models/Brewery.php';
+require_once __DIR__.'/../repositories/BreweryRepo.php';
 
 class MenuController extends AppController {
 
@@ -12,17 +14,20 @@ class MenuController extends AppController {
 
     private $message = [];
     private $beerRepo;
+    private $breweryRepo;
 
     public function __construct()
     {
         parent::__construct();
         $this->beerRepo = new BeerRepo();
+        $this->breweryRepo = new BreweryRepo();
     }
 
     public function menu()
     {
         $beers = $this->beerRepo->getBeers();
-        $this->render('menu', ['beers' => $beers]);
+        $breweries = $this->breweryRepo->getBreweries();
+        $this->render('menu', ['beers' => $beers, 'breweries' => $breweries]);
     }
 
     public function addBeer()
@@ -38,7 +43,8 @@ class MenuController extends AppController {
 
             return $this->render('menu', [
                 'messages' => $this->message,
-                'beers' => $this->beerRepo->getBeers()
+                'beers' => $this->beerRepo->getBeers(),
+                'breweries' => $this->breweryRepo->getBreweries()
             ]);
         }
         return $this->render('adding', ['messages' => $this->message]);
@@ -58,10 +64,31 @@ class MenuController extends AppController {
         }
     }
 
+    public function searchBrewery() {
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+        if ($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            echo json_encode($this->breweryRepo->getBreweryByName($decoded['searchBrewery']));
+        }
+    }
+
     public function selected() {
         //$title = $_POST['title'];
         $title = $_GET['title'];
        return $this->render('selected', ['beer' => $this->beerRepo->getToDisplayByTitle($title)]);
+    }
+
+    public function selectedBrewery() {
+        $name = $_GET['name'];
+        return $this->render('selectedBrewery',
+            ['brewery' => $this->breweryRepo->getToDisplayBrewery($name),
+            'beers' => $this->beerRepo->getBeersByBrewery($name)]);
     }
 
     private function validate(array $file): bool

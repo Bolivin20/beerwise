@@ -1,13 +1,13 @@
 <?php
 
-use Cassandra\Date;
-
 require_once 'Repository.php';
 require_once __DIR__.'/../models/Beer.php';
+require_once __DIR__.'/../models/Brewery.php';
+require_once 'BreweryRepo.php';
 
 class BeerRepo extends Repository
 {
-    public function getBeer(int $id): ?Beer
+    /*public function getBeer(int $id): ?Beer
     {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.beers WHERE id = :id
@@ -30,10 +30,12 @@ class BeerRepo extends Repository
             $beer['description'],
             $beer['img']
         );
-    }
+    }*/
 
     public function addBeer(Beer $beer): void
     {
+        $breweryRepo = new BreweryRepo();
+
         $date = new DateTime();
         $stmt = $this->database->connect()->prepare('
             INSERT INTO public.beers (title, brewery, style, abv, description, img, creation_date, id_user)
@@ -56,6 +58,10 @@ class BeerRepo extends Repository
             $date->format('Y-m-d'),
             $id_user
         ]);
+
+        if(!$breweryRepo->checkIfExist($beer->getBrewery())){
+            $breweryRepo->addBrewery($beer->getBrewery(), $this->getBeerId($beer->getTitle()));
+        }
     }
 
     public function getBeers(): array
@@ -95,6 +101,30 @@ class BeerRepo extends Repository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getBeersByBrewery(string $brewery): array
+    {
+        $brewery = strtolower($brewery);
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM beers WHERE LOWER(brewery) LIKE :brewery
+        ');
+        $stmt->bindParam(':brewery', $brewery, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $beers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = [];
+        foreach ($beers as $beer) {
+            $result[] = new Beer(
+                $beer['title'],
+                $beer['brewery'],
+                $beer['style'],
+                $beer['abv'],
+                $beer['description'],
+                $beer['img']
+            );
+        }
+        return $result;
+    }
+
     public function getToDisplayByTitle(string $title): Beer
     {
         $stmt = $this->database->connect()->prepare('
@@ -113,5 +143,18 @@ class BeerRepo extends Repository
             $beer[0]['description'],
             $beer[0]['img']
         );
+    }
+
+    public function getBeerId(string $title): int
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT id FROM beers WHERE title = :title
+        ');
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $beer = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $beer['id'];
     }
 }

@@ -51,11 +51,14 @@
         </description>
 
         <rate>
-                <input name="beer" type="text" placeholder="Rate this beer here...">           
-            <b>
+            <form action="addRate" method="post">
+                <input name="rate" type="number" placeholder="Rate this beer here... ">
+                <input type="hidden" name="title" value="<?= $beer->getTitle(); ?>">
+            <button type="submit">
                 <i class="fa-solid fa-plus"></i>
                 <rt>Rate</rt> 
-            </b>
+            </button>
+            </form>
         </rate>
 
     </div>

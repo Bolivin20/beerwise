@@ -162,5 +162,18 @@ input{
     rate{
         flex-direction: column;
     }
-
+    .component{
+        display: table;
+        flex-direction: row;
+        justify-content: center;
+        margin: 1em;
+    }
+    .beers {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: baseline;
+        overflow: auto;
+        height: 30em;
+    }
 }
