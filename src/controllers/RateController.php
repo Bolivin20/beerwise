@@ -37,6 +37,8 @@ class RateController extends AppController
             $this->rateRepo->addRate($rate);
             $message[] = 'Rate added!';
         }
+        $avgRate = $this->rateRepo->countAvgRate($id_beer);
+        $this->beerRepo->updateRate($avgRate, $id_beer);
 
         return $this->render('menu', [
             'beers' => $this->beerRepo->getBeers(),

@@ -46,4 +46,16 @@ class RateRepo extends Repository
         $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $stmt->execute();
     }
+
+    public function countAvgRate(int $id): float
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT AVG(rate) FROM rates WHERE id_beer = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $rate = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $rate['avg'];
+    }
 }

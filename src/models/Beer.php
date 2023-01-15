@@ -7,8 +7,9 @@ class Beer {
     private $abv;
     private $description;
     private $img;
+    private $rate;
 
-    public function __construct($title, $brewery, $style, $abv, $description, $img)
+    public function __construct($title, $brewery, $style, $abv, $description, $img, $rate=0)
     {
         $this->title = $title;
         $this->brewery = $brewery;
@@ -16,6 +17,7 @@ class Beer {
         $this->abv = $abv;
         $this->description = $description;
         $this->img = $img;
+        $this->rate = $rate;
     }
 
     public function getTitle()
@@ -76,5 +78,15 @@ class Beer {
     public function setImage($img)
     {
         $this->img = $img;
+    }
+
+    public function getRate()
+    {
+        return $this->rate;
+    }
+
+    public function setRate($rate)
+    {
+        $this->rate = $rate;
     }
 }

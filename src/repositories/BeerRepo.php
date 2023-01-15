@@ -38,8 +38,8 @@ class BeerRepo extends Repository
 
         $date = new DateTime();
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO public.beers (title, brewery, style, abv, description, img, creation_date, id_user)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO public.beers (title, brewery, style, abv, description, img, creation_date, id_user, rate)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)
         ');
 
         if(isset($_COOKIE['id'])) {
@@ -56,7 +56,9 @@ class BeerRepo extends Repository
             $beer->getDescription(),
             $beer->getImage(),
             $date->format('Y-m-d'),
-            $id_user
+            $id_user,
+            0
+
         ]);
 
         if(!$breweryRepo->checkIfExist($beer->getBrewery())){
@@ -156,5 +158,15 @@ class BeerRepo extends Repository
         $beer = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $beer['id'];
+    }
+
+    public function updateRate(float $rate, int $id): void
+    {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE beers SET rate = :rate WHERE id = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':rate', $rate, PDO::PARAM_STR);
+        $stmt->execute();
     }
 }

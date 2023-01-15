@@ -15,7 +15,7 @@
         <rating>
          <i class="fa-solid fa-star"></i>
          <t>Rating:</t>
-         <b>8.21/10</b>
+         <b><?= $beer->getRate(); ?> /10</b>
          </rating>
         <b>
             <i class="fa-solid fa-arrow-left"></i>
