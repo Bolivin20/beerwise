@@ -58,4 +58,16 @@ class RateRepo extends Repository
         $rate = $stmt->fetch(PDO::FETCH_ASSOC);
         return $rate['avg'];
     }
+
+    public function countAvgBreweryRate(string $name) : float
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT AVG(rate) FROM beers WHERE brewery = :name
+        ');
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $rate = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $rate['avg'];
+    }
 }

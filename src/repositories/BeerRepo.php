@@ -83,7 +83,8 @@ class BeerRepo extends Repository
                 $beer['style'],
                 $beer['abv'],
                 $beer['description'],
-                $beer['img']
+                $beer['img'],
+                $beer['rate']
             );
         }
 
@@ -121,7 +122,8 @@ class BeerRepo extends Repository
                 $beer['style'],
                 $beer['abv'],
                 $beer['description'],
-                $beer['img']
+                $beer['img'],
+                $beer['rate']
             );
         }
         return $result;
@@ -143,7 +145,8 @@ class BeerRepo extends Repository
             $beer[0]['style'],
             $beer[0]['abv'],
             $beer[0]['description'],
-            $beer[0]['img']
+            $beer[0]['img'],
+            $beer[0]['rate']
         );
     }
 
@@ -160,7 +163,7 @@ class BeerRepo extends Repository
         return $beer['id'];
     }
 
-    public function updateRate(float $rate, int $id): void
+    public function updateDatabaseRate(float $rate, int $id): void
     {
         $stmt = $this->database->connect()->prepare('
             UPDATE beers SET rate = :rate WHERE id = :id
@@ -168,5 +171,18 @@ class BeerRepo extends Repository
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->bindParam(':rate', $rate, PDO::PARAM_STR);
         $stmt->execute();
+    }
+
+    public function getBreweryByBeer(string $title): string
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT brewery FROM beers WHERE title = :title
+        ');
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $beer = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $beer['brewery'];
     }
 }

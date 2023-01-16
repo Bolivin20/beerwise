@@ -82,7 +82,18 @@ class BreweryRepo extends Repository
         $brewery = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return new Brewery(
-            $brewery[0]['name']
+            $brewery[0]['name'],
+            $brewery[0]['rate']
         );
+    }
+
+    public function updateDatabaseBreweryRate(float $rate, string $name): void
+    {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE breweries SET rate = :rate WHERE name = :name
+        ');
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':rate', $rate, PDO::PARAM_STR);
+        $stmt->execute();
     }
 }

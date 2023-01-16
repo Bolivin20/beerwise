@@ -42,4 +42,5 @@ class Rate
     {
         $this->id_user = $id_user;
     }
+
 }

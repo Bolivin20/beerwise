@@ -40,6 +40,7 @@ class MenuController extends AppController {
 
             $beer = new Beer($_POST['title'],$_POST['brewery'],$_POST['style'],$_POST['abv'], $_POST['description'], $_FILES['file']['name']);
             $this->beerRepo->addBeer($beer);
+            $this->message[] = 'Beer added!';
 
             return $this->render('menu', [
                 'messages' => $this->message,
