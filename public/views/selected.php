@@ -52,7 +52,8 @@
 
         <rate>
             <form action="addRate" method="post">
-                <input name="rate" type="number" placeholder="Rate this beer here... ">
+                <t>Rate this beer (0-10 integer).</t>
+                <input name="rate" type="number" min="1" max="10" placeholder="1-10">
                 <input type="hidden" name="title" value="<?= $beer->getTitle(); ?>">
             <button type="submit">
                 <i class="fa-solid fa-plus"></i>

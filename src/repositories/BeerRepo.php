@@ -210,4 +210,20 @@ class BeerRepo extends Repository
 
         return $result;
     }
+
+    public function checkIfExist(string $title): bool
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM beers WHERE title = :title
+        ');
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $beer = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($beer){
+            return true;
+        }
+        return false;
+    }
 }

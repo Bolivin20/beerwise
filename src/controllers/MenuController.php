@@ -38,6 +38,36 @@ class MenuController extends AppController {
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
+            if($this->beerRepo->checkIfExist($_POST['title'])){
+                return $this->render('menu',
+                        ['messages' => ['Beer already exist!'],
+                        'beers' => $this->beerRepo->getBeers(),
+                        'breweries' => $this->breweryRepo->getBreweries()]);
+            }
+
+            $style = strtolower($_POST['style']);
+
+            if(!in_array($style, ['pils', 'lager', 'porter', 'stout', 'ipa'])){
+                return $this->render('adding',
+                        ['messages' => ['Style is not valid!'],
+                        'beers' => $this->beerRepo->getBeers(),
+                        'breweries' => $this->breweryRepo->getBreweries()]);
+            }
+
+            if(!preg_match('/^[0-9]+([.,][0-9]+)?%?$/', $_POST['abv'])){
+                return $this->render('adding',
+                        ['messages' => ['ABV is not valid!'],
+                        'beers' => $this->beerRepo->getBeers(),
+                        'breweries' => $this->breweryRepo->getBreweries()]);
+            }
+
+            if(strlen($_POST['title']) < 2 || strlen($_POST['brewery']) < 2 || strlen($_POST['description']) < 2){
+                return $this->render('adding',
+                        ['messages' => ['Too short input!'],
+                        'beers' => $this->beerRepo->getBeers(),
+                        'breweries' => $this->breweryRepo->getBreweries()]);
+            }
+
             $beer = new Beer($_POST['title'],$_POST['brewery'],$_POST['style'],$_POST['abv'], $_POST['description'], $_FILES['file']['name']);
             $this->beerRepo->addBeer($beer);
             $this->message[] = 'Beer added!';
@@ -48,6 +78,7 @@ class MenuController extends AppController {
                 'breweries' => $this->breweryRepo->getBreweries()
             ]);
         }
+
         return $this->render('adding', ['messages' => $this->message]);
     }
 
@@ -80,15 +111,29 @@ class MenuController extends AppController {
     }
 
     public function selected() {
-        $title = $_GET['title'];
-       return $this->render('selected', ['beer' => $this->beerRepo->getToDisplayByTitle($title)]);
+        if($this->isGet()) {
+            $title = $_GET['title'];
+            return $this->render('selected', ['beer' => $this->beerRepo->getToDisplayByTitle($title)]);
+        }
+        $this->message[] = 'Something went wrong!';
+        return $this->render('menu', [
+            'beers' => $this->beerRepo->getBeers(),
+            'breweries' => $this->breweryRepo->getBreweries(),
+            'messages' => $this->message]);
     }
 
     public function selectedBrewery() {
-        $name = $_GET['name'];
-        return $this->render('selectedBrewery',
-            ['brewery' => $this->breweryRepo->getToDisplayBrewery($name),
-            'beers' => $this->beerRepo->getBeersByBrewery($name)]);
+        if($this->isGet()) {
+            $name = $_GET['name'];
+            return $this->render('selectedBrewery',
+                ['brewery' => $this->breweryRepo->getToDisplayBrewery($name),
+                    'beers' => $this->beerRepo->getBeersByBrewery($name)]);
+        }
+        $this->message[] = 'Something went wrong!';
+        return $this->render('menu', [
+            'beers' => $this->beerRepo->getBeers(),
+            'breweries' => $this->breweryRepo->getBreweries(),
+            'messages' => $this->message]);
     }
 
     public function ratings(){
