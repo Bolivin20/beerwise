@@ -96,4 +96,24 @@ class BreweryRepo extends Repository
         $stmt->bindParam(':rate', $rate, PDO::PARAM_STR);
         $stmt->execute();
     }
+
+    public function getTop5Breweries(): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.breweries ORDER BY rate DESC LIMIT 5;
+        ');
+        $stmt->execute();
+        $breweries = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($breweries as $brewery) {
+            $result[] = new Brewery(
+                $brewery['name'],
+                $brewery['rate']
+            );
+        }
+
+        return $result;
+    }
 }

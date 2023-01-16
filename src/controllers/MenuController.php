@@ -80,7 +80,6 @@ class MenuController extends AppController {
     }
 
     public function selected() {
-        //$title = $_POST['title'];
         $title = $_GET['title'];
        return $this->render('selected', ['beer' => $this->beerRepo->getToDisplayByTitle($title)]);
     }
@@ -90,6 +89,12 @@ class MenuController extends AppController {
         return $this->render('selectedBrewery',
             ['brewery' => $this->breweryRepo->getToDisplayBrewery($name),
             'beers' => $this->beerRepo->getBeersByBrewery($name)]);
+    }
+
+    public function ratings(){
+        $beers = $this->beerRepo->getTop5Beers();
+        $breweries = $this->breweryRepo->getTop5Breweries();
+        return $this->render('ratings', ['beers' => $beers, 'breweries' => $breweries]);
     }
 
     private function validate(array $file): bool

@@ -10,7 +10,7 @@ Router::get('menu', 'MenuController');
 Router::post('login', 'SecurityController');
 Router::post('register','RegistrationController');
 Router::get('registration','DefaultController');
-Router::post('ratingsPage','RatingsPageController');
+Router::get('ratings','MenuController');
 Router::post('addBeer','MenuController');
 Router::get('logout','SecurityController');
 Router::post('search','MenuController');

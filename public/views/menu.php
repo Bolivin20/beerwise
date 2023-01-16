@@ -76,7 +76,7 @@
             }
         }
         ?>
-        <form method="post" action="ratingsPage">
+        <form method="get" action="ratings">
             <button type="submit">
                 <i class="fa-solid fa-star"></i>
                 <b>Ratings</b>

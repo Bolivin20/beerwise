@@ -185,4 +185,29 @@ class BeerRepo extends Repository
 
         return $beer['brewery'];
     }
+
+    public function getTop5Beers(): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.beers ORDER BY rate DESC LIMIT 5;
+        ');
+        $stmt->execute();
+        $beers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($beers as $beer) {
+            $result[] = new Beer(
+                $beer['title'],
+                $beer['brewery'],
+                $beer['style'],
+                $beer['abv'],
+                $beer['description'],
+                $beer['img'],
+                $beer['rate']
+            );
+        }
+
+        return $result;
+    }
 }
