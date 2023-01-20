@@ -9,6 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 </head>
 <body>
+<?php
+    if(!isset($_COOKIE['id'])){
+        header('Location: login');
+        exit();
+    }
+?>
 <div class="base-container">
     <panel>
         <i class="fa-regular fa-user"></i>
@@ -18,8 +24,11 @@
 
     </panel>
 
-    <header>
+    <div class="logo">
         <img src="public/img/logo.svg">
+    </div>
+
+    <div class="header">
         <f>
             <b1>
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -30,8 +39,7 @@
                 <input name="brewery" type="text" placeholder="Discover brewery here...">
             </b1>
         </f>
-
-    </header>
+    </div>
 
 <div class="content">
     <section class = "beers">
@@ -59,10 +67,9 @@
         </div>
         <?php endforeach; ?>
     </section>
-
 </div>
 
-    <options>
+    <div class="options">
         <form method="post" action="addBeer">
             <button type="submit">
                 <i class="fa-solid fa-plus"></i>
@@ -83,7 +90,7 @@
             </button>
         </form>
 
-    </options>
+    </div>
 </div>
 </body>
 

@@ -6,16 +6,18 @@ body {
     height: 150vh;
     width: 100vw;
     background: #ECFFCF;
-    
-}
-
-img {
-    height: 3em;
 }
 
 .base-container:first-child {
     position: absolute;
     top: 0;
+}
+
+.component button {
+    background: #ECFFCF;
+    border-radius: 45px;
+    border: 0;
+    padding: 3em;
 }
 
 panel {
@@ -27,11 +29,22 @@ panel {
     border: 0px;
     border-radius: 45px;
     height: 2em;
-    padding: 1em;
+    padding: 3em;
     margin: 3em;
     position: absolute;
     right: 0;
- 
+}
+
+.base-container panel form button {
+    background: #ECFFCF;
+    border-radius: 45px;
+    border: 0;
+    font-size: 35px;
+    padding: 0.5em;
+
+    font-family: 'Oswald', sans-serif;
+    color: #65370E;
+    font-weight: 10;
 }
 
 panel i {
@@ -44,33 +57,36 @@ panel i {
 b {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    font-size: 45px;
+    font-size: 60px;
     line-height: 44px;
     padding: 1em;
     
     color: #65370E;
 }
 
-header {
+.header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 2em;
 }
-a{
+
+.logo {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-e{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 2em;
+.logo img {
+    height: 25em;
+    margin: 2em;
+}
+
+.component img {
+    height: 7em;
+    margin: 0.5em;
 }
 
 f {
@@ -83,65 +99,50 @@ f {
     border-radius: 45px;
 }
 
-table {
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    height: 15em;
-    width: 20em;
-}
 .content {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
+
 .component{
     display: table;
     flex-direction: row;
     justify-content: center;
     margin: 1em;
+
+    background: rgba(88, 202, 60, 0.42);
+    border: 0px;
+    border-radius: 45px;
 }
+
 .beers {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: baseline;
     overflow: auto;
-    height: 30em;
+    height: 50em;
+    margin-right: 10em;
 }
+
 .breweries {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: baseline;
     overflow: auto;
-    height: 30em;
+    height: 50em;
 }
+
 section{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.search {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-table1 {
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    height: 15em;
-    width: 20em;
-}
-
-pusty{
-    padding: 5em;
-}
 b1 {
     display: flex;
     flex-direction: row;
@@ -178,28 +179,31 @@ input {
     border-radius: 30px;
     
     width: 80%;
-    font-size: 25px;
+    font-size: 45px;
 }
 
 b1 i {
     color: grey;
     margin: 0.5em;
+    font-size: 40px;
 }
 
 b2 i{
     color: grey;
     margin: 0.5em;
+    font-size: 40px;
 }
 
-options {
+.options {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: 6em;
 }
 
 
-options button{
+.options form button{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -217,15 +221,28 @@ options button{
 }
 
 form{
-    margin: 4em;
+    margin: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
+
 @media only screen and (max-device-width: 420px) {
  b1 {
-    font-size: 35px;
+    font-size: 30px;
  }
 
  b2 {
-    font-size: 35px;
+    font-size: 30px;
+ }
+
+ b {
+    font-size: 40px;
+ }
+
+ .beers {
+     margin: 0em;
  }
 
  header {
@@ -233,8 +250,8 @@ form{
     padding: 5em;
  }
 
- img {
-    height: 50em;
+ .logo {
+    justify-content: left;
  }
 }
 

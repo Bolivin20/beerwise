@@ -8,6 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 </head>
 <body>
+<?php
+if(!isset($_COOKIE['id'])){
+    header('Location: login');
+    exit();
+}
+?>
     <div class="header">
         <img src="public/img/logo.svg">
         <div class="choosing">

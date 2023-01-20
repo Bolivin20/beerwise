@@ -8,6 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 </head>
 <body>
+<?php
+if(!isset($_COOKIE['id'])){
+    header('Location: login');
+    exit();
+}
+?>
 <div class="base">
     <div class="left">
         <sen>Adding new beer.</sen>

@@ -20,6 +20,16 @@ body {
     align-items: center;
     margin: 2em;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    width: 100%;
+}
+
 .right{
     display: flex;
     flex-direction: column;
@@ -63,7 +73,7 @@ input{
     font-weight: 700;
     font-size: 40px;
     color: red;
-    margin: 2em;
+    margin: 1em;
 }
 
 textarea{
@@ -95,31 +105,6 @@ button{
     font-weight: 700;
     font-size: 60px;
     color: #65370E;
-}
-button i{
-    margin:0.5em;
-}
-b{
-    background: rgba(88, 202, 60, 0.42);
-    border: 0px;
-    border-radius: 45px;
-    padding: 1em;
-    margin: 2em;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: 60px;
-    color: #65370E;
-
-    
-}
-b pic{
-    font-size:200px;
 }
 
 @media only screen and (max-device-width: 420px) {
