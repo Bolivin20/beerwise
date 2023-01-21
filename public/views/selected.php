@@ -23,42 +23,38 @@ if(!isset($_COOKIE['id'])){
          <t>Rating:</t>
          <b><?= $beer->getRate(); ?> /10</b>
          </rating>
-        <b>
-            <i class="fa-solid fa-arrow-left"></i>
-            <bck>Back</bck>
-        </b>
     </div>
     <div class="rightside">
-        <name >
+        <component >
             <t>name:</t>
             <b><?= $beer->getTitle(); ?></b>
-        </name>
+        </component>
 
-        <brewery>
+        <component>
             <t>brewery:</t>
             <b><?= $beer->getBrewery(); ?></b>
-        </brewery>
+        </component>
 
-        <type>
+        <component>
             <t> style: </t>
             <b><?= $beer->getStyle(); ?></b>
-        </type>
+        </component>
 
-        <alcohol>
+        <component>
             <t>alcohol:</t>
             <b><?= $beer->getAbv(); ?></b>
-        </alcohol>
+        </component>
 
-        <description>
+        <component>
             <t>description:</t>
             <div class="des">
                 <b2><?= $beer->getDescription(); ?></b2>
                 </div>
-        </description>
+        </component>
 
-        <rate>
+        <div class="rate">
             <form action="addRate" method="post">
-                <t>Rate this beer (0-10 integer).</t>
+                <t>Rate this beer (1-10 integer):</t>
                 <input name="rate" type="number" min="1" max="10" placeholder="1-10">
                 <input type="hidden" name="title" value="<?= $beer->getTitle(); ?>">
             <button type="submit">
@@ -66,7 +62,7 @@ if(!isset($_COOKIE['id'])){
                 <rt>Rate</rt> 
             </button>
             </form>
-        </rate>
+        </div>
 
     </div>
     </div>

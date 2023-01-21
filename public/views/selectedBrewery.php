@@ -6,7 +6,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 </head>
-<body>
 <?php
 if(!isset($_COOKIE['id'])){
     header('Location: login');
@@ -17,21 +16,18 @@ if(!isset($_COOKIE['id'])){
 
     <div class="leftside">
         <?php ?>
-        <rating>
+        <div class="brewname">
+        <tbrew>Brewery:</tbrew>
+        <namebrewery >
+            <?= $brewery->getName(); ?>
+        </namebrewery>
+        </div>
+        <ratingbrewery>
             <i class="fa-solid fa-star"></i>
-            <t>Rating:</t>
+            <tbrew>Rating:</tbrew>
             <b><?= $brewery->getRate(); ?>/10</b>
-        </rating>
-        <b>
-            <i class="fa-solid fa-arrow-left"></i>
-            <bck>Back</bck>
-        </b>
-    </div>
-    <div class="rightside">
-        <name >
-            <t>name:</t>
-            <b><?= $brewery->getName(); ?></b>
-        </name>
+        </ratingbrewery>
+        <tbrew>Brewery's beers:</tbrew>
         <section class = "beers">
             <?php foreach ($beers as $beer): ?>
                 <div class="component">
@@ -39,13 +35,12 @@ if(!isset($_COOKIE['id'])){
                         <img src="public/uploads/<?= $beer->getImage(); ?>">
                         <button type="submit" id="selected">
                             <input type="hidden" name="title" value="<?= $beer->getTitle(); ?>">
-                            <b><?= $beer->getTitle(); ?></b>
+                            <bb><?= $beer->getTitle(); ?></bb>
                         </button>
                     </form>
                 </div>
             <?php endforeach; ?>
         </section>
-
-    </div>
+</div>
 </div>
 </body>

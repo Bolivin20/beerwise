@@ -68,14 +68,7 @@
         <?php endforeach; ?>
     </section>
 </div>
-
-    <div class="options">
-        <form method="post" action="addBeer">
-            <button type="submit">
-                <i class="fa-solid fa-plus"></i>
-                <b>Add beer</b>
-            </button>
-        </form>
+    <div class="messages">
         <?php
         if(isset($messages)){
             foreach($messages as $message) {
@@ -83,6 +76,15 @@
             }
         }
         ?>
+    </div>
+    <div class="options">
+        <form method="post" action="addBeer">
+            <button type="submit">
+                <i class="fa-solid fa-plus"></i>
+                <b>Add beer</b>
+            </button>
+        </form>
+
         <form method="get" action="ratings">
             <button type="submit">
                 <i class="fa-solid fa-star"></i>
