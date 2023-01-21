@@ -69,7 +69,7 @@ class BeerRepo extends Repository
         $searchString = '%' . strtolower($searchString) . '%';
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM beers WHERE LOWER(title) LIKE :search OR LOWER(description) LIKE :search
+            SELECT * FROM beers WHERE LOWER(title) LIKE :search
         ');
         $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
         $stmt->execute();

@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     background: #ECFFCF;
     display: flex;
@@ -6,7 +6,8 @@ body{
     justify-content: center;
     align-items: center;
 }
-.header{
+
+.header {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -14,14 +15,14 @@ body{
     padding: 2em;
 }
 
-.ratings{
+.ratings {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-button{
+button {
     width: 100px;
     background: rgba(88, 202, 60, 0.42);
     border: 1px solid #65370E;
@@ -33,15 +34,15 @@ button{
 
 }
 
-img{
+img {
     height:50em;
 }
 
-.ratings img{
+.ratings img {
     height: 3em;
 }
 
-b{
+b {
     background: rgba(88, 202, 60, 0.42);
     border: 0px;
     border-radius: 45px;
@@ -52,7 +53,7 @@ b{
     padding: 0.5em;
 }
 
-.beers{
+.beers {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,7 +61,7 @@ b{
     padding: 10em;
 }
 
-.breweries{
+.breweries {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,7 +69,7 @@ b{
     padding: 10em;
 }
 
-.table{
+.table {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -76,7 +77,7 @@ b{
     padding: 2em;
 }
 
-table{
+table {
     background: rgba(88, 202, 60, 0.42);
     border: 0px;
     border-radius: 45px;
@@ -92,16 +93,15 @@ td{
 }
 
 @media only screen and (max-device-width: 420px) {
-    .header{
+    .header {
         flex-direction: column;
     }
 
-    .ratings{
+    .ratings {
         flex-direction: column;
-        
     }
 
-    img{
+    img {
         height: 30em;
     }
 
@@ -109,11 +109,11 @@ td{
         font-size: 20px;
     }
 
-    b{
+    b {
         font-size: 40px;
     }
 
-    table{
+    table {
         font-size: 25px;
     }
 
@@ -121,7 +121,7 @@ td{
         padding: 5em;
     }
 
-    .breweries{
+    .breweries {
         padding: 0em;
     }
 }

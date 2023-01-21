@@ -21,7 +21,7 @@ if(!isset($_COOKIE['id'])){
         <rating>
          <i class="fa-solid fa-star"></i>
          <t>Rating:</t>
-         <b><?= $beer->getRate(); ?> /10</b>
+         <b><?= round($beer->getRate(),2); ?> /10</b>
          </rating>
     </div>
     <div class="rightside">

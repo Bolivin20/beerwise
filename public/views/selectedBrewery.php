@@ -25,7 +25,7 @@ if(!isset($_COOKIE['id'])){
         <ratingbrewery>
             <i class="fa-solid fa-star"></i>
             <tbrew>Rating:</tbrew>
-            <b><?= $brewery->getRate(); ?>/10</b>
+            <b><?= round($brewery->getRate(),2); ?>/10</b>
         </ratingbrewery>
         <tbrew>Brewery's beers:</tbrew>
         <section class = "beers">

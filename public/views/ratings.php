@@ -30,7 +30,7 @@ if(!isset($_COOKIE['id'])){
                         <td><?=$i++; ?>.</td>
                         <td><img src="public/uploads/<?= $beer->getImage(); ?>"></td>
                         <td><?= $beer->getTitle(); ?></td>
-                        <td><?= $beer->getRate(); ?>/10</td>
+                        <td><?= round($beer->getRate(),2); ?>/10</td>
                     </tr>
                     <?php endforeach; ?>
                 </table>
@@ -47,7 +47,7 @@ if(!isset($_COOKIE['id'])){
                     <tr>
                         <td><?=$i++; ?>.</td>
                         <td><?= $brewery->getName(); ?></td>
-                        <td><?= $brewery->getRate(); ?>/10</td>
+                        <td><?= round($brewery->getRate(),2); ?>/10</td>
                     </tr>
                     <?php endforeach; ?>
                 </table>
