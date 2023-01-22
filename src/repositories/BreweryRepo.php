@@ -9,7 +9,8 @@ class BreweryRepo extends Repository
     {
         $name = strtolower($name);
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.breweries WHERE LOWER(name) = :name
+            SELECT beers.brewery, breweries.name FROM beers INNER JOIN 
+                breweries ON beers.brewery = breweries.name WHERE LOWER(breweries.name) = :name
         ');
         $stmt->bindParam(':name', $name, PDO::PARAM_STR);
         $stmt->execute();
