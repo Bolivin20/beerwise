@@ -8,24 +8,24 @@
 </head>
 <body>
 <?php
-if(!isset($_COOKIE['id'])){
+if (!isset($_COOKIE['id'])) {
     header('Location: login');
     exit();
 }
 ?>
-    <div class="base-container">
-            
+<div class="base-container">
+
     <div class="leftside">
         <?php ?>
         <img src="public/uploads/<?= $beer->getImage(); ?>">
         <rating>
-         <i class="fa-solid fa-star"></i>
-         <t>Rating:</t>
-         <b><?= round($beer->getRate(),2); ?> /10</b>
-         </rating>
+            <i class="fa-solid fa-star"></i>
+            <t>Rating:</t>
+            <b><?= round($beer->getRate(), 2); ?> /10</b>
+        </rating>
     </div>
     <div class="rightside">
-        <component >
+        <component>
             <t>name:</t>
             <b><?= $beer->getTitle(); ?></b>
         </component>
@@ -36,7 +36,7 @@ if(!isset($_COOKIE['id'])){
         </component>
 
         <component>
-            <t> style: </t>
+            <t> style:</t>
             <b><?= $beer->getStyle(); ?></b>
         </component>
 
@@ -49,7 +49,7 @@ if(!isset($_COOKIE['id'])){
             <t>description:</t>
             <div class="des">
                 <b2><?= $beer->getDescription(); ?></b2>
-                </div>
+            </div>
         </component>
 
         <div class="rate">
@@ -57,13 +57,13 @@ if(!isset($_COOKIE['id'])){
                 <t>Rate this beer (1-10 integer):</t>
                 <input name="rate" type="number" min="1" max="10" placeholder="1-10">
                 <input type="hidden" name="title" value="<?= $beer->getTitle(); ?>">
-            <button type="submit">
-                <i class="fa-solid fa-plus"></i>
-                <rt>Rate</rt> 
-            </button>
+                <button type="submit">
+                    <i class="fa-solid fa-plus"></i>
+                    <rt>Rate</rt>
+                </button>
             </form>
         </div>
 
     </div>
-    </div>
+</div>
 </body>

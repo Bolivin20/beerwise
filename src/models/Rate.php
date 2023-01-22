@@ -13,17 +13,17 @@ class Rate
         $this->id_user = $id_user;
     }
 
-    public function getRate() : int
+    public function getRate(): int
     {
         return $this->rate;
     }
 
-    public function getIdBeer() : int
+    public function getIdBeer(): int
     {
         return $this->id_beer;
     }
 
-    public function getIdUser() : int
+    public function getIdUser(): int
     {
         return $this->id_user;
     }

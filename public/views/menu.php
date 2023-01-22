@@ -10,10 +10,10 @@
 </head>
 <body>
 <?php
-    if(!isset($_COOKIE['id'])){
-        header('Location: login');
-        exit();
-    }
+if (!isset($_COOKIE['id'])) {
+    header('Location: login');
+    exit();
+}
 ?>
 <div class="base-container">
     <panel>
@@ -41,37 +41,37 @@
         </f>
     </div>
 
-<div class="content">
-    <section class = "beers">
-        <?php foreach ($beers as $beer): ?>
-            <div class="component">
-                <form action="selected" method="get">
-                <img src="public/uploads/<?= $beer->getImage(); ?>">
-                    <button type="submit" id="selected">
-                        <input type="hidden" name="title" value="<?= $beer->getTitle(); ?>">
-                        <b><?= $beer->getTitle(); ?></b>
-                    </button>
-                </form>
-            </div>
-        <?php endforeach; ?>
+    <div class="content">
+        <section class="beers">
+            <?php foreach ($beers as $beer): ?>
+                <div class="component">
+                    <form action="selected" method="get">
+                        <img src="public/uploads/<?= $beer->getImage(); ?>">
+                        <button type="submit" id="selected">
+                            <input type="hidden" name="title" value="<?= $beer->getTitle(); ?>">
+                            <b><?= $beer->getTitle(); ?></b>
+                        </button>
+                    </form>
+                </div>
+            <?php endforeach; ?>
         </section>
-    <section class = "breweries">
-        <?php foreach ($breweries as $brewery): ?>
-        <div class="component">
-            <form action="selectedBrewery" method="get">
-                <button type="submit" id="selectedBrewery">
-                <b><?= $brewery->getName(); ?></b>
-                <input type="hidden" name="name" value="<?= $brewery->getName(); ?>">
-                </button>
-            </form>
-        </div>
-        <?php endforeach; ?>
-    </section>
-</div>
+        <section class="breweries">
+            <?php foreach ($breweries as $brewery): ?>
+                <div class="component">
+                    <form action="selectedBrewery" method="get">
+                        <button type="submit" id="selectedBrewery">
+                            <b><?= $brewery->getName(); ?></b>
+                            <input type="hidden" name="name" value="<?= $brewery->getName(); ?>">
+                        </button>
+                    </form>
+                </div>
+            <?php endforeach; ?>
+        </section>
+    </div>
     <div class="messages">
         <?php
-        if(isset($messages)){
-            foreach($messages as $message) {
+        if (isset($messages)) {
+            foreach ($messages as $message) {
                 echo $message;
             }
         }
@@ -97,23 +97,23 @@
 </body>
 
 <template id="beerSearch-template">
-        <div class="component">
-            <form action="selected" method="get">
+    <div class="component">
+        <form action="selected" method="get">
             <img src="">
-                <button type="submit" id="selected">
-            <b></b>
-                    <input type="hidden" name="title" value="">
-                </button>
-            </form>
-        </div>
+            <button type="submit" id="selected">
+                <b></b>
+                <input type="hidden" name="title" value="">
+            </button>
+        </form>
+    </div>
 </template>
 <template id="brewerySearch-template">
-        <div class="component">
-            <form action="selectedBrewery" method="get">
-                <button type="submit" id="selectedBrewery">
+    <div class="component">
+        <form action="selectedBrewery" method="get">
+            <button type="submit" id="selectedBrewery">
                 <b></b>
                 <input type="hidden" name="name" value="">
-                </button>
-            </form>
-        </div>
+            </button>
+        </form>
+    </div>
 </template>

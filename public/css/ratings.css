@@ -35,7 +35,7 @@ button {
 }
 
 img {
-    height:50em;
+    height: 50em;
 }
 
 .ratings img {
@@ -88,7 +88,7 @@ table {
     padding: 0.5em;
 }
 
-td{
+td {
     padding: 0.5em;
 }
 
@@ -105,7 +105,7 @@ td{
         height: 30em;
     }
 
-    button{
+    button {
         font-size: 20px;
     }
 

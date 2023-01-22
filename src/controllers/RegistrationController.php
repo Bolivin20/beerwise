@@ -1,8 +1,8 @@
 <?php
 
 require_once 'AppController.php';
-require_once __DIR__ .'/../models/User.php';
-require_once __DIR__.'/../repositories/UserRepo.php';
+require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../repositories/UserRepo.php';
 
 class RegistrationController extends AppController
 {
@@ -19,15 +19,15 @@ class RegistrationController extends AppController
         $password = $_POST['password'];
         $password2 = $_POST['password2'];
 
-        if($name == "" || $surname == "" || $email == "" || $password == "" || $password2 == ""){
+        if ($name == "" || $surname == "" || $email == "" || $password == "" || $password2 == "") {
             return $this->render('registration', ['messages' => ['All fields are required!']]);
         }
 
-        if($userRepo->checkIfExist($email)){
+        if ($userRepo->checkIfExist($email)) {
             return $this->render('registration', ['messages' => ['User already exist!']]);
         }
 
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return $this->render('registration', ['messages' => ['Email is not valid!']]);
         }
 

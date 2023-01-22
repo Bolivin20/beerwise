@@ -1,6 +1,7 @@
 <?php
 
-class Beer {
+class Beer
+{
     private $title;
     private $brewery;
     private $style;
@@ -9,7 +10,7 @@ class Beer {
     private $img;
     private $rate;
 
-    public function __construct($title, $brewery, $style, $abv, $description, $img, $rate=0)
+    public function __construct($title, $brewery, $style, $abv, $description, $img, $rate = 0)
     {
         $this->title = $title;
         $this->brewery = $brewery;

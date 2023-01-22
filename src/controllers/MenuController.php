@@ -1,14 +1,15 @@
 <?php
 
 require_once 'AppController.php';
-require_once __DIR__ .'/../models/Beer.php';
-require_once __DIR__.'/../repositories/BeerRepo.php';
-require_once __DIR__ .'/../models/Brewery.php';
-require_once __DIR__.'/../repositories/BreweryRepo.php';
+require_once __DIR__ . '/../models/Beer.php';
+require_once __DIR__ . '/../repositories/BeerRepo.php';
+require_once __DIR__ . '/../models/Brewery.php';
+require_once __DIR__ . '/../repositories/BreweryRepo.php';
 
-class MenuController extends AppController {
+class MenuController extends AppController
+{
 
-    const MAX_FILE_SIZE = 1024*1024;
+    const MAX_FILE_SIZE = 1024 * 1024;
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg', 'image/jpg'];
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
@@ -35,40 +36,40 @@ class MenuController extends AppController {
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
-                dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
+                dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['file']['name']
             );
 
-            if($this->beerRepo->checkIfExist($_POST['title'])){
+            if ($this->beerRepo->checkIfExist($_POST['title'])) {
                 return $this->render('menu',
-                        ['messages' => ['Beer already exist!'],
+                    ['messages' => ['Beer already exist!'],
                         'beers' => $this->beerRepo->getBeers(),
                         'breweries' => $this->breweryRepo->getBreweries()]);
             }
 
             $style = strtolower($_POST['style']);
 
-            if(!in_array($style, ['pils', 'lager', 'porter', 'stout', 'ipa'])){
+            if (!in_array($style, ['pils', 'lager', 'porter', 'stout', 'ipa'])) {
                 return $this->render('adding',
-                        ['messages' => ['Style is not valid!'],
+                    ['messages' => ['Style is not valid!'],
                         'beers' => $this->beerRepo->getBeers(),
                         'breweries' => $this->breweryRepo->getBreweries()]);
             }
 
-            if(!preg_match('/^[0-9]+([.,][0-9]+)?%?$/', $_POST['abv'])){
+            if (!preg_match('/^[0-9]+([.,][0-9]+)?%?$/', $_POST['abv'])) {
                 return $this->render('adding',
-                        ['messages' => ['ABV is not valid!'],
+                    ['messages' => ['ABV is not valid!'],
                         'beers' => $this->beerRepo->getBeers(),
                         'breweries' => $this->breweryRepo->getBreweries()]);
             }
 
-            if(strlen($_POST['title']) < 2 || strlen($_POST['brewery']) < 2 || strlen($_POST['description']) < 2){
+            if (strlen($_POST['title']) < 2 || strlen($_POST['brewery']) < 2 || strlen($_POST['description']) < 2) {
                 return $this->render('adding',
-                        ['messages' => ['Too short input!'],
+                    ['messages' => ['Too short input!'],
                         'beers' => $this->beerRepo->getBeers(),
                         'breweries' => $this->breweryRepo->getBreweries()]);
             }
 
-            $beer = new Beer($_POST['title'],$_POST['brewery'],$_POST['style'],$_POST['abv'], $_POST['description'], $_FILES['file']['name']);
+            $beer = new Beer($_POST['title'], $_POST['brewery'], $_POST['style'], $_POST['abv'], $_POST['description'], $_FILES['file']['name']);
             $this->beerRepo->addBeer($beer);
             $this->message[] = 'Beer added!';
 
@@ -82,7 +83,8 @@ class MenuController extends AppController {
         return $this->render('adding', ['messages' => $this->message]);
     }
 
-    public function search() {
+    public function search()
+    {
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
         if ($contentType === "application/json") {
@@ -96,7 +98,8 @@ class MenuController extends AppController {
         }
     }
 
-    public function searchBrewery() {
+    public function searchBrewery()
+    {
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
         if ($contentType === "application/json") {
@@ -110,8 +113,9 @@ class MenuController extends AppController {
         }
     }
 
-    public function selected() {
-        if($this->isGet()) {
+    public function selected()
+    {
+        if ($this->isGet()) {
             $title = $_GET['title'];
             return $this->render('selected', ['beer' => $this->beerRepo->getToDisplayByTitle($title)]);
         }
@@ -122,8 +126,9 @@ class MenuController extends AppController {
             'messages' => $this->message]);
     }
 
-    public function selectedBrewery() {
-        if($this->isGet()) {
+    public function selectedBrewery()
+    {
+        if ($this->isGet()) {
             $name = $_GET['name'];
             return $this->render('selectedBrewery',
                 ['brewery' => $this->breweryRepo->getToDisplayBrewery($name),
@@ -136,7 +141,8 @@ class MenuController extends AppController {
             'messages' => $this->message]);
     }
 
-    public function ratings(){
+    public function ratings()
+    {
         $beers = $this->beerRepo->getTop5Beers();
         $breweries = $this->breweryRepo->getTop5Breweries();
         return $this->render('ratings', ['beers' => $beers, 'breweries' => $breweries]);

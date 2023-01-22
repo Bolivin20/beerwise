@@ -1,12 +1,12 @@
 <?php
 
 require_once 'AppController.php';
-require_once __DIR__ .'/../models/Rate.php';
-require_once __DIR__.'/../repositories/RateRepo.php';
-require_once __DIR__ .'/../models/Beer.php';
-require_once __DIR__.'/../repositories/BeerRepo.php';
-require_once __DIR__ .'/../models/Brewery.php';
-require_once __DIR__.'/../repositories/BreweryRepo.php';
+require_once __DIR__ . '/../models/Rate.php';
+require_once __DIR__ . '/../repositories/RateRepo.php';
+require_once __DIR__ . '/../models/Beer.php';
+require_once __DIR__ . '/../repositories/BeerRepo.php';
+require_once __DIR__ . '/../models/Brewery.php';
+require_once __DIR__ . '/../repositories/BreweryRepo.php';
 
 class RateController extends AppController
 {
@@ -22,7 +22,8 @@ class RateController extends AppController
         $this->breweryRepo = new BreweryRepo();
     }
 
-    public function addRate(){
+    public function addRate()
+    {
         $rate = $_POST['rate'];
         $id_beer = $this->beerRepo->getBeerId($_POST['title']);
         $id_user = $_COOKIE['id'];
@@ -30,7 +31,7 @@ class RateController extends AppController
 
         $rate = new Rate($rate, $id_beer, $id_user);
 
-        if($this->rateRepo->checkIfRateExist($id_beer, $id_user)){
+        if ($this->rateRepo->checkIfRateExist($id_beer, $id_user)) {
             $this->rateRepo->updateRate($rate->getRate(), $id_beer, $id_user);
             $message[] = 'Rate updated!';
         } else {

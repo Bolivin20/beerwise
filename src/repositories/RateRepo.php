@@ -2,23 +2,23 @@
 
 
 require_once 'Repository.php';
-require_once __DIR__.'/../models/Rate.php';
+require_once __DIR__ . '/../models/Rate.php';
 
 
 class RateRepo extends Repository
 {
     public function addRate(Rate $rate): void
     {
-            $stmt = $this->database->connect()->prepare('
+        $stmt = $this->database->connect()->prepare('
             INSERT INTO public.rates (rate, id_beer, id_user)
             VALUES (?, ?, ?)
         ');
 
-            $stmt->execute([
-                $rate->getRate(),
-                $rate->getIdBeer(),
-                $rate->getIdUser()
-            ]);
+        $stmt->execute([
+            $rate->getRate(),
+            $rate->getIdBeer(),
+            $rate->getIdUser()
+        ]);
     }
 
     public function checkIfRateExist($id_beer, $id_user): bool
@@ -30,7 +30,7 @@ class RateRepo extends Repository
         $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $stmt->execute();
         $rate = $stmt->fetch(PDO::FETCH_ASSOC);
-        if($rate){
+        if ($rate) {
             return true;
         }
         return false;
@@ -59,7 +59,7 @@ class RateRepo extends Repository
         return $rate['avg'];
     }
 
-    public function countAvgBreweryRate(string $name) : float
+    public function countAvgBreweryRate(string $name): float
     {
         $stmt = $this->database->connect()->prepare('
             SELECT AVG(rate) FROM beers WHERE brewery = :name

@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 </head>
 <?php
-if(!isset($_COOKIE['id'])){
+if (!isset($_COOKIE['id'])) {
     header('Location: login');
     exit();
 }
@@ -17,18 +17,18 @@ if(!isset($_COOKIE['id'])){
     <div class="leftside">
         <?php ?>
         <div class="brewname">
-        <tbrew>Brewery:</tbrew>
-        <namebrewery >
-            <?= $brewery->getName(); ?>
-        </namebrewery>
+            <tbrew>Brewery:</tbrew>
+            <namebrewery>
+                <?= $brewery->getName(); ?>
+            </namebrewery>
         </div>
         <ratingbrewery>
             <i class="fa-solid fa-star"></i>
             <tbrew>Rating:</tbrew>
-            <b><?= round($brewery->getRate(),2); ?>/10</b>
+            <b><?= round($brewery->getRate(), 2); ?>/10</b>
         </ratingbrewery>
         <tbrew>Brewery's beers:</tbrew>
-        <section class = "beers">
+        <section class="beers">
             <?php foreach ($beers as $beer): ?>
                 <div class="component">
                     <form action="selected" method="get">
@@ -41,6 +41,6 @@ if(!isset($_COOKIE['id'])){
                 </div>
             <?php endforeach; ?>
         </section>
-</div>
+    </div>
 </div>
 </body>

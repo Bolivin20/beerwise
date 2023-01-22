@@ -6,7 +6,7 @@ class Brewery
     private $rate;
 
 
-    public function __construct($name, $rate=0)
+    public function __construct($name, $rate = 0)
     {
         $this->name = $name;
         $this->rate = $rate;

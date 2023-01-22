@@ -60,7 +60,7 @@ b {
     font-size: 60px;
     line-height: 44px;
     padding: 1em;
-    
+
     color: #65370E;
 }
 
@@ -107,7 +107,7 @@ f {
     align-items: center;
 }
 
-.component{
+.component {
     display: table;
     flex-direction: row;
     justify-content: center;
@@ -137,7 +137,7 @@ f {
     height: 50em;
 }
 
-section{
+section {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -178,7 +178,7 @@ input {
     background: #FFFFFF;
     border: 0px;
     border-radius: 30px;
-    
+
     width: 80%;
     font-size: 45px;
 }
@@ -189,7 +189,7 @@ b1 i {
     font-size: 40px;
 }
 
-b2 i{
+b2 i {
     color: grey;
     margin: 0.5em;
     font-size: 40px;
@@ -204,7 +204,7 @@ b2 i{
 }
 
 
-.options form button{
+.options form button {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -233,7 +233,7 @@ b2 i{
     align-items: center;
 }
 
-form{
+form {
     margin: 2em;
     display: flex;
     flex-direction: row;
@@ -242,42 +242,42 @@ form{
 }
 
 @media only screen and (max-device-width: 420px) {
- b1 {
-    font-size: 30px;
- }
+    b1 {
+        font-size: 30px;
+    }
 
- b2 {
-    font-size: 30px;
- }
+    b2 {
+        font-size: 30px;
+    }
 
- b {
-    font-size: 40px;
- }
+    b {
+        font-size: 40px;
+    }
 
- .beers {
-     margin: 0em;
- }
+    .beers {
+        margin: 0em;
+    }
 
- header {
-    flex-direction: column;
-    padding: 5em;
- }
+    header {
+        flex-direction: column;
+        padding: 5em;
+    }
 
- .logo {
-    justify-content: left;
- }
+    .logo {
+        justify-content: left;
+    }
 
- input {
-    font-size: 20px;
- }
+    input {
+        font-size: 20px;
+    }
 
- b1 i {
-     font-size: 20px;
- }
+    b1 i {
+        font-size: 20px;
+    }
 
- b2 i{
-     font-size: 20px;
- }
+    b2 i {
+        font-size: 20px;
+    }
 
 }
 

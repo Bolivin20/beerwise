@@ -15,8 +15,8 @@ function markValidation(element, condition) {
 
 function checkStyle(element) {
     return element === 'lager' || element === 'pils' || element === 'porter' || element === 'stout' || element === 'ipa' ||
-           element === 'Lager' || element === 'Pils' || element === 'Porter' || element === 'Stout' || element === 'Ipa' ||
-           element === 'LAGER' || element === 'PILS' || element === 'PORTER' || element === 'STOUT' || element === 'IPA';
+        element === 'Lager' || element === 'Pils' || element === 'Porter' || element === 'Stout' || element === 'Ipa' ||
+        element === 'LAGER' || element === 'PILS' || element === 'PORTER' || element === 'STOUT' || element === 'IPA';
 
 }
 

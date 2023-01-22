@@ -1,8 +1,8 @@
 <?php
 
 require_once 'Repository.php';
-require_once __DIR__.'/../models/Beer.php';
-require_once __DIR__.'/../models/Brewery.php';
+require_once __DIR__ . '/../models/Beer.php';
+require_once __DIR__ . '/../models/Brewery.php';
 require_once 'BreweryRepo.php';
 
 class BeerRepo extends Repository
@@ -17,7 +17,7 @@ class BeerRepo extends Repository
             VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)
         ');
 
-        if(isset($_COOKIE['id'])) {
+        if (isset($_COOKIE['id'])) {
             $id_user = $_COOKIE['id'];
         }
 
@@ -34,7 +34,7 @@ class BeerRepo extends Repository
 
         ]);
 
-        if(!$breweryRepo->checkIfExist($beer->getBrewery())){
+        if (!$breweryRepo->checkIfExist($beer->getBrewery())) {
             $breweryRepo->addBrewery($beer->getBrewery(), $this->getBeerId($beer->getTitle()));
         }
     }
@@ -194,7 +194,7 @@ class BeerRepo extends Repository
 
         $beer = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if($beer){
+        if ($beer) {
             return true;
         }
         return false;

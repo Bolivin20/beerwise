@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../../Database.php';
+require_once __DIR__ . '/../../Database.php';
 
 class Repository
 {
@@ -10,5 +10,4 @@ class Repository
     {
         $this->database = new Database();
     }
-    //zastanowic sie nad singletonem
 }

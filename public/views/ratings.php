@@ -8,51 +8,51 @@
 </head>
 <body>
 <?php
-if(!isset($_COOKIE['id'])){
+if (!isset($_COOKIE['id'])) {
     header('Location: login');
     exit();
 }
 ?>
-    <div class="header">
-        <img src="public/img/logo.svg">
-    </div>
+<div class="header">
+    <img src="public/img/logo.svg">
+</div>
 
-    <div class="ratings">
-        <div class="beers">
-            <b>
+<div class="ratings">
+    <div class="beers">
+        <b>
             <t>Top 5 beers:</t>
-            </b>
-            <div class="table">
-                <table>
-                    <?php $i = 1;
-                    foreach ($beers as $beer):?>
+        </b>
+        <div class="table">
+            <table>
+                <?php $i = 1;
+                foreach ($beers as $beer):?>
                     <tr>
-                        <td><?=$i++; ?>.</td>
+                        <td><?= $i++; ?>.</td>
                         <td><img src="public/uploads/<?= $beer->getImage(); ?>"></td>
                         <td><?= $beer->getTitle(); ?></td>
-                        <td><?= round($beer->getRate(),2); ?>/10</td>
+                        <td><?= round($beer->getRate(), 2); ?>/10</td>
                     </tr>
-                    <?php endforeach; ?>
-                </table>
-            </div>
+                <?php endforeach; ?>
+            </table>
         </div>
-        <div class="breweries">
-            <b>
-            <t>Top 5 breweries:</t>
-            </b>
-            <div class="table">
-                <table>
-                    <?php $i = 1;
-                    foreach ($breweries as $brewery):?>
-                    <tr>
-                        <td><?=$i++; ?>.</td>
-                        <td><?= $brewery->getName(); ?></td>
-                        <td><?= round($brewery->getRate(),2); ?>/10</td>
-                    </tr>
-                    <?php endforeach; ?>
-                </table>
-        </div>
-        </div>
-
     </div>
+    <div class="breweries">
+        <b>
+            <t>Top 5 breweries:</t>
+        </b>
+        <div class="table">
+            <table>
+                <?php $i = 1;
+                foreach ($breweries as $brewery):?>
+                    <tr>
+                        <td><?= $i++; ?>.</td>
+                        <td><?= $brewery->getName(); ?></td>
+                        <td><?= round($brewery->getRate(), 2); ?>/10</td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+    </div>
+
+</div>
 </body>

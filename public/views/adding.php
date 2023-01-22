@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php
-if(!isset($_COOKIE['id'])){
+if (!isset($_COOKIE['id'])) {
     header('Location: login');
     exit();
 }
@@ -19,26 +19,26 @@ if(!isset($_COOKIE['id'])){
         <sen>Adding new beer.</sen>
         <form action="addBeer" method="post" enctype="multipart/form-data">
 
-    <input name="title" type="text" placeholder="Name">
-    <input name="brewery" type="text" placeholder="Brewery">
-    <input name="style" type="text" placeholder="Style">
-    <input name="abv" type="text" placeholder="Alcohol">
-    <textarea name="description" rows="5" placeholder="Description..."></textarea>
+            <input name="title" type="text" placeholder="Name">
+            <input name="brewery" type="text" placeholder="Brewery">
+            <input name="style" type="text" placeholder="Style">
+            <input name="abv" type="text" placeholder="Alcohol">
+            <textarea name="description" rows="5" placeholder="Description..."></textarea>
 
-    <input type="file" name="file">
+            <input type="file" name="file">
 
             <div class="messages">
                 <?php
-                if(isset($messages)){
-                    foreach($messages as $message) {
+                if (isset($messages)) {
+                    foreach ($messages as $message) {
                         echo $message;
                     }
                 }
                 ?>
             </div>
-    <button type="submit">Add</button>
-    </form>
+            <button type="submit">Add</button>
+        </form>
 
-</div>
+    </div>
 </div>
 </body>

@@ -2,7 +2,6 @@ const search = document.querySelector('input[placeholder="Discover beer here..."
 const beerContainer = document.querySelector('.beers');
 
 search.addEventListener('keyup', function (event) {
-    //TODO action after every keyup
     if (event.key === "Enter") {
         event.preventDefault();
 

@@ -5,15 +5,17 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
-.base{
+
+.base {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.left{
+
+.left {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,33 +32,36 @@ form {
     width: 100%;
 }
 
-.right{
+.right {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 4em;
 }
-.panel{
+
+.panel {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-sen{
+
+sen {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: 100px;
     color: #65370E;
 }
-input{
+
+input {
     background: rgba(88, 202, 60, 0.42);
     border: 0px;
     border-radius: 45px;
     padding: 1em;
     margin: 1em;
     width: 100%;
-    
+
 
     font-size: 35px;
 }
@@ -68,7 +73,7 @@ input{
     outline: none;
 }
 
-.messages{
+.messages {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: 40px;
@@ -76,7 +81,7 @@ input{
     margin: 1em;
 }
 
-textarea{
+textarea {
     background: rgba(88, 202, 60, 0.42);
     border: 0px;
     border-radius: 45px;
@@ -88,7 +93,7 @@ textarea{
     font-size: 35px;
 }
 
-button{
+button {
     background: rgba(88, 202, 60, 0.42);
     border: 0px;
     border-radius: 45px;
@@ -108,7 +113,7 @@ button{
 }
 
 @media only screen and (max-device-width: 420px) {
-    .base{
+    .base {
         flex-direction: column;
     }
 }
