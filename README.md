@@ -17,6 +17,11 @@ Ponadto aplikacja udostępnia bardziej szczegółowe informacje na temat danego 
 Nie możesz odnaleźć w naszej bazie piwa, które Cię intersuje?
 Możesz pomóc rozwijać aplikację dodając brakujące piwo, aby umożliwić innym użytkownikom jego ocene.
 
+
+<img src="./public/img/menu_ss.png" height="400">
+<img src="./public/img/beer_ss.png" height="400">
+<img src="./public/img/rating_ss.png" height="400">
+
 ## Technologie
 
 * HTML
